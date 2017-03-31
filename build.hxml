@@ -1,0 +1,6 @@
+-cp ./source
+-java-lib ./libs/android.jar
+com.example.app.Main
+-D no-compilation
+-java ./native/src/main/java
+-dce full
