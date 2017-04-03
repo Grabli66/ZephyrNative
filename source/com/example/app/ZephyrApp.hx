@@ -1,28 +1,30 @@
 
 package com.example.app;
 
-import android.graphics.drawable.ColorDrawable;
 import android.app.Activity;
-import android.widget.TextView;
 import android.os.Bundle;
 import android.view.Window;
 
 @:keep
 class ZephyrApp extends android.app.Activity {
 
-    @:overload
-    public override function onCreate (b : Bundle) : Void {
-        super.onCreate (b);
-        this.requestWindowFeature (Window.FEATURE_NO_TITLE);
-        var page = render ();
-        setContentView (page.render (this));
-    }
+    /**
+     *  Entry point to user code
+     */
+    private static inline var MAIN_NAME = "com.example.app.Main";
 
     /**
-     *  Call on render
-     *  Virtual
+     *  On activity create
+     *  @param b - 
      */
-    public function render () : Page {
-        return null;
-    }
+    @:overload
+    override function onCreate (b : Bundle) : Void {
+        super.onCreate (b);        
+        this.requestWindowFeature (Window.FEATURE_NO_TITLE);
+        var cls = Type.resolveClass (ZephyrApp.MAIN_NAME);
+        if (cls != null) {
+            var inst : IApplication = cast Type.createEmptyInstance (cls);
+            inst.onReady (new AppContext (this));
+        }
+    }            
 }

@@ -1,19 +1,16 @@
 package com.example.app;
 
-import com.example.app.TagBuilder.*;
-
 @:keep
-class Main extends ZephyrApp {
+class Main implements IApplication  {    
 
-    override public function render () : Page {
-        return page ([
-            toolbar (),
-            listview ({
-                dataSource : ["Item 1", "Item 2", "Item 3", "Item 4"],
-                renderItem : function (e) {
-                    return imagebutton ();
-                }
-            })
-        ]);
+    public function onReady (context : AppContext) : Void {
+        context.registerController (MainController);
+        context.registerController (SecondController);
+
+        context.navigate (MainController);
+
+        /*App.registerPage (MainPage);        
+        App.registerPage (AnotherPage);
+        App.navigate (MainPage);*/
     }
 }

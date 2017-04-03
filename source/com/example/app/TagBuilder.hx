@@ -2,8 +2,8 @@ package com.example.app;
 
 class TagBuilder {
 
-    public static function page (?childs : Array<Tag>) : Page {
-        return new Page (childs);
+    public static function vbox (?childs : Array<Tag>) : VBox {
+        return new VBox (childs);
     }
 
     public static function toolbar (?childs : Array<Tag>) : Toolbar {
@@ -16,5 +16,9 @@ class TagBuilder {
 
     public static function imagebutton () : Imagebutton {
         return new Imagebutton ();
+    }
+
+    public static function textview (options : TextViewOptions) : Textview {
+        return new Textview (options);
     }
 }

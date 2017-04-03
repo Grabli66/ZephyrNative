@@ -69,6 +69,7 @@ class Toolbar extends Tag {
         imageButton.setLayoutParams (params);        
         imageButton.setBackground(color);
         imageButton.setImageDrawable (bars);
+        imageButton.setOnClickListener (new OnClick ());
         layout.addView (imageButton);
 
         var textView = new TextView (context); 
